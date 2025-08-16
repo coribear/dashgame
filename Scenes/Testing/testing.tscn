@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2f1pgrj58kns"]
+
+[ext_resource type="PackedScene" uid="uid://blvfd5l8qjppg" path="res://Scenes/Testing/MainChar.tscn" id="1_lfqjs"]
+[ext_resource type="PackedScene" uid="uid://bdg734kvohwaw" path="res://Scenes/Terrain/Floor.tscn" id="2_ekrrw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_lfqjs")]
+position = Vector2(126, -347)
+scale = Vector2(0.5, 0.5)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_ekrrw")]
+position = Vector2(841, -39)

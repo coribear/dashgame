@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://blvfd5l8qjppg"]
+
+[ext_resource type="Script" path="res://Scenes/Testing/MainChar.gd" id="1_fbhmh"]
+[ext_resource type="Texture2D" uid="uid://csruwdj36uew4" path="res://Assets/MainCharacter/BlobSS.png" id="1_rai7u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myaxl"]
+size = Vector2(506, 483)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_fbhmh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rai7u")
+hframes = 9
+frame = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+position = Vector2(1, 231.5)
+shape = SubResource("RectangleShape2D_myaxl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]

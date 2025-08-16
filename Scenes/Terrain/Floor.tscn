@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdg734kvohwaw"]
+
+[ext_resource type="Texture2D" uid="uid://p7w8ve8m5am6" path="res://Assets/Placeholder/YellowFloor.png" id="1_vectc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee41"]
+size = Vector2(1817, 219)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-18.25, -5.25)
+scale = Vector2(0.9267, 0.249373)
+texture = ExtResource("1_vectc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.10605, -0.137848)
+scale = Vector2(0.9267, 0.249373)
+shape = SubResource("RectangleShape2D_gee41")
