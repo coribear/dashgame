@@ -1,25 +1,107 @@
-[gd_scene load_steps=4 format=3 uid="uid://blvfd5l8qjppg"]
+[gd_scene load_steps=9 format=3 uid="uid://blvfd5l8qjppg"]
 
 [ext_resource type="Script" path="res://Scenes/Testing/MainChar.gd" id="1_fbhmh"]
-[ext_resource type="Texture2D" uid="uid://csruwdj36uew4" path="res://Assets/MainCharacter/BlobSS.png" id="1_rai7u"]
+[ext_resource type="Texture2D" uid="uid://o5yxy21ukm5" path="res://Assets/MainCharacter/BlobSheet.png" id="2_4jgr6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myaxl"]
 size = Vector2(506, 483)
+
+[sub_resource type="Animation" id="Animation_mp235"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_igpi6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bpyrf"]
+resource_name = "jump"
+length = 1.7
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_ms7dt"]
+resource_name = "dash"
+length = 0.9
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.108378, 0.211029, 0.699257, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ilvlq"]
+_data = {
+"RESET": SubResource("Animation_igpi6"),
+"dash": SubResource("Animation_ms7dt"),
+"idle": SubResource("Animation_mp235"),
+"jump": SubResource("Animation_bpyrf")
+}
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_fbhmh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_rai7u")
-hframes = 9
-frame = 6
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4jgr6")
+hframes = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
-position = Vector2(1, 231.5)
+position = Vector2(-21, -67)
 shape = SubResource("RectangleShape2D_myaxl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ilvlq")
+}
+autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)

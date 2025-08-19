@@ -9,6 +9,8 @@ extends CharacterBody2D
 var is_dashing: bool = false
 var dash_time: float = 0.0
 
+const fall_limit: float = 200.0
+
 func _ready():
 	pass # Replace with function body.
 
@@ -20,6 +22,7 @@ func _physics_process(delta):
 
 	get_gravity(delta)
 	get_input(delta)
+	check_position()
 	move_and_slide()
 
 func get_gravity(delta) -> void:
@@ -43,3 +46,10 @@ func get_input(delta) -> void:
 		
 	if dash_time >= max_dash_time or not Input.is_action_pressed("Dash"):
 		is_dashing = false
+
+func check_position() -> void:
+	if position.y > fall_limit:
+		die()
+
+func die() -> void:
+	queue_free()
