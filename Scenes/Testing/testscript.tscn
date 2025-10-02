@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://blvfd5l8qjppg"]
+[gd_scene load_steps=11 format=3 uid="uid://6ful5pbx4dnn"]
 
-[ext_resource type="Script" path="res://Scenes/Testing/MainChar.gd" id="1_fbhmh"]
-[ext_resource type="Texture2D" uid="uid://cst6rrpc2deng" path="res://Assets/MainCharacter/BlobAnim.png" id="2_pvcbk"]
-[ext_resource type="Script" path="res://Scenes/Testing/Camera2D.gd" id="3_qu8y1"]
+[ext_resource type="Script" path="res://Scenes/Testing/testscript.gd" id="1_pbt6n"]
+[ext_resource type="Texture2D" uid="uid://cst6rrpc2deng" path="res://Assets/MainCharacter/BlobAnim.png" id="2_giwd8"]
+[ext_resource type="Script" path="res://Scenes/Testing/Camera2D.gd" id="3_m1re7"]
 
 [sub_resource type="Animation" id="Animation_igpi6"]
 length = 0.001
@@ -103,11 +103,16 @@ size = Vector2(178, 79)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
-script = ExtResource("1_fbhmh")
+script = ExtResource("1_pbt6n")
+move_speed = null
+jump_force = null
+gravity = null
+dash_speed = null
+max_dash_time = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_pvcbk")
+texture = ExtResource("2_giwd8")
 hframes = 26
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -119,7 +124,7 @@ autoplay = "idle"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 limit_bottom = 200
-script = ExtResource("3_qu8y1")
+script = ExtResource("3_m1re7")
 player = NodePath("..")
 
 [node name="DebugLabel" type="Label" parent="."]
@@ -134,7 +139,7 @@ Line 3
 "
 
 [node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
