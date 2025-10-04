@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2f1pgrj58kns"]
+[gd_scene load_steps=5 format=3 uid="uid://d2f1pgrj58kns"]
 
 [ext_resource type="PackedScene" uid="uid://blvfd5l8qjppg" path="res://Scenes/Testing/MainChar.tscn" id="1_lfqjs"]
 [ext_resource type="Script" path="res://Scenes/Testing/testing.gd" id="1_wk5ge"]
 [ext_resource type="PackedScene" uid="uid://bdg734kvohwaw" path="res://Scenes/Terrain/Floor.tscn" id="2_ekrrw"]
+[ext_resource type="PackedScene" uid="uid://brjmecelkm3yv" path="res://Scenes/Checkpoints/Checkpoint.tscn" id="4_eecsn"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1111, -342)
@@ -37,3 +38,7 @@ scale = Vector2(-0.0669253, -2.02884)
 [node name="StaticBody2D7" parent="." instance=ExtResource("2_ekrrw")]
 position = Vector2(9156, -214)
 scale = Vector2(-0.0669253, -0.748841)
+
+[node name="Area2D" parent="." instance=ExtResource("4_eecsn")]
+position = Vector2(3209, -255)
+scale = Vector2(3.12, 3.32)
